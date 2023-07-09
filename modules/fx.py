@@ -5,7 +5,7 @@ class FX:
     def __init__(self, sample_rate=44100):
         self.sample_rate = sample_rate
 
-    def apply_reverb(self, waveform, reverb_decay: float):
+    def broken_reverb(self, waveform, reverb_decay: float):
         """
         reverb_decay: The decay amount for the reverb effect. Higher values result in longer decay. (0.1 to 2.0)
         """
@@ -14,7 +14,7 @@ class FX:
 
         return waveform_with_reverb
 
-    def apply_delay(self, waveform, delay_time: float, delay_gain: float):
+    def pumping_delay(self, waveform, delay_time: float, delay_gain: float):
         """
         delay_time: The time delay of the delayed signal in seconds. (0.01 to 0.5)
         delay_gain: The gain of the delayed signal. Higher values result in a louder delayed signal. (0.1 to 0.9)
@@ -34,12 +34,11 @@ class FX:
 
         return waveform_with_delay
 
-    def apply_lfo(self, waveform, lfo_frequency: float, lfo_min_depth: float, lfo_max_depth: float):
+    def ok_lfo(self, waveform, lfo_frequency: float, lfo_min_depth: float, lfo_max_depth: float):
         """
         lfo_frequency: The frequency of the LFO in Hz. Determines the speed of the modulation. (0.1 to 10.0)
         lfo_min_depth: The minimum depth (amount applied) of modulation in Hz. (1.0 to 20.0)
         lfo_max_depth: The maximum depth (amount applied) of modulation in Hz. (10.0 to 100.0)
-
         """
         lfo = np.sin(2 * np.pi * lfo_frequency * np.arange(len(waveform)) / float(self.sample_rate))
         modulation_depth = np.random.uniform(lfo_min_depth, lfo_max_depth)
