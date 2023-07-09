@@ -10,9 +10,9 @@ class Player:
 
     def play_waveform(self, waveform, sample_rate=None):
         self._stream = self._p.open(format=pyaudio.paFloat32,
-                                   channels=1,
-                                   rate=sample_rate or self._sample_rate,
-                                   output=True)
+                                    channels=1,
+                                    rate=sample_rate or self._sample_rate,
+                                    output=True)
 
         self._stream.write(waveform.tobytes())
 
